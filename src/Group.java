@@ -1,9 +1,9 @@
 public class Group {
 
-    //stack
 
+    private Stack<Ball> group;
     public Group ()
     {
-
+        group = new Stack<Ball>();
     }
 }

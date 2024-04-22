@@ -3,13 +3,38 @@ import java.awt.*;
 public class Ball
 {
 
-    private int color;
-    private Image imageJ;
+    private int x;              // Center x
+    private int y;              // Center y
+    private int dx;             // delta x in one time unit
+    private int dy;             // delta y in one time unit
+    private int radius;         // Radius of the ball
+    private Color color;
 
-    public Ball (int color, Image imageJ)
+    public Ball() 
     {
+        this(200, 300,5,4, 10, Color.RED);
+    }
+    
+    public Ball (int x, int y, int dx, int dy, int radius, Color color)
+    {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.radius = radius;
         this.color = color;
-        this.imageJ = imageJ;
+    }
+
+    public boolean isClicked(int x, int y) 
+    {
+        double dx = (this.x - x) * (this.x - x);
+        double dy = (this.y - y) * (this.y - y);
+        return Math.sqrt(dx + dy) <= radius;
+    }
+
+    public void setColor(Color colorIn)
+    {
+        color = colorIn;
     }
 
 }
