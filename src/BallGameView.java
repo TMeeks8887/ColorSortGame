@@ -1,7 +1,6 @@
 // Teddy Meeks
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 
 public class BallGameView extends JFrame
@@ -33,9 +32,35 @@ public class BallGameView extends JFrame
         this.setVisible(true);
     }
 
+    // Draws the welcome screen
+    public void drawWelcome(Graphics g)
+    {
+        // Sets color to black because reset had color as white
+        g.setColor(Color.BLACK);
+
+        g.drawString("Hello! ", X_OFFSET + 20, Y_OFFSET + 20);
+        g.drawString("Thank you for playing Color Sort Ball Game! ", X_OFFSET + 20, Y_OFFSET + 40);
+        g.drawString("by Teddy Meeks", X_OFFSET + 20, Y_OFFSET + 60);
+    }
+
+    // Draws the rules
+    public void drawRules(Graphics g)
+    {
+        // Sets color to black because reset had color as white
+        g.setColor(Color.BLACK);
+
+        g.drawString("Rules: ", X_OFFSET + 20, Y_OFFSET + 20);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 40);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 60);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 80);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 100);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 120);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 140);
+        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 160);
+    }
     public void paint(Graphics g) 
     {
-        b.draw(g);
+        ball.draw(g);
         if (ref.getGameState() == 0)
         {
             drawWelcome(g);

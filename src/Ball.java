@@ -1,3 +1,4 @@
+// Teddy Meeks
 import java.awt.*;
 
 public class Ball
@@ -32,9 +33,17 @@ public class Ball
         return Math.sqrt(dx + dy) <= radius;
     }
 
+    public void setCenter(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
     public void setColor(Color colorIn)
     {
         color = colorIn;
     }
-
+    public void draw(Graphics g) {
+        g.setColor(color);
+        g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
+    }
 }

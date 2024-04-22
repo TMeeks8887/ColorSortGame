@@ -9,7 +9,7 @@ public class BallGame implements MouseListener, MouseMotionListener
 {
     private BallGameView window;
     private Ball ball;
-    
+    private int gameState = 0;
     
     public BallGame()
     {
@@ -25,17 +25,23 @@ public class BallGame implements MouseListener, MouseMotionListener
         int y = e.getY();
 
         // If the ball is clicked
-        if (b.isClicked(x, y))
+        if (ball.isClicked(x, y))
         {
             // Move the ball and repaint.
-            b.setCenter(x, y);
+            ball.setCenter(x, y);
             window.repaint();
         }
     }
-    
-    
-    
-    
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+    public int getGameState()
+    {
+        return gameState;
+    }
+
     public void playBallGame()
     {
 
@@ -44,5 +50,30 @@ public class BallGame implements MouseListener, MouseMotionListener
     {
         BallGame game = new BallGame();
         game.playBallGame();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

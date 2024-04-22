@@ -1,9 +1,13 @@
-public class Group {
+// Teddy Meeks
+import java.util.ArrayList;
 
 
-    private Stack<Ball> group;
+public class Group
+{
+
+    private ArrayList<Ball> group;
     public Group ()
     {
-        group = new Stack<Ball>();
+        group = new ArrayList<>();
     }
 }
