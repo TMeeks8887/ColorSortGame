@@ -17,6 +17,16 @@ public class BallGame implements MouseListener, MouseMotionListener
     public BallGame()
     {
         group = new ArrayList<Ball>();
+        addToMainGroup(group);
+        this.ball = new Ball();
+        this.window = new BallGameView(this, ball, group);
+
+        this.window.addMouseListener(this);
+        this.window.addMouseMotionListener(this);
+    }
+
+    public void addToMainGroup(ArrayList<Ball> group)
+    {
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 4; j++)
@@ -36,11 +46,11 @@ public class BallGame implements MouseListener, MouseMotionListener
                 group.add(b);
             }
         }
-        this.ball = new Ball();
-        this.window = new BallGameView(this, ball, group);
+    }
+    public void addToMiniGroups()
+    {
+        ArrayList<Ball> mini1 = new ArrayList<Ball>();
 
-        this.window.addMouseListener(this);
-        this.window.addMouseMotionListener(this);
     }
 
 

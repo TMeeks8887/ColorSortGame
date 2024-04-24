@@ -61,6 +61,20 @@ public class BallGameView extends JFrame
         g.drawString("II", X_OFFSET + 20, Y_OFFSET + 140);
         g.drawString("II", X_OFFSET + 20, Y_OFFSET + 160);
     }
+
+    public void drawVials(Graphics g)
+    {
+        g.setColor(Color.BLACK);
+
+        g.drawString("___", 65, 190);
+        g.drawString("___", 215, 190);
+        g.drawString("___", 365, 190);
+        g.drawString("___", 515, 190);
+        g.drawString("___", 65, 390);
+        g.drawString("___", 215, 390);
+        g.drawString("___", 365, 390);
+        g.drawString("___", 515, 390);
+    }
     public void reset(Graphics g)
     {
         // Resets screen to white
@@ -93,6 +107,7 @@ public class BallGameView extends JFrame
         {
 //            ball.draw(g);
             drawBalls(g);
+            drawVials(g);
         }
     }
 }
