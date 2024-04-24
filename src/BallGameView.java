@@ -1,6 +1,7 @@
 // Teddy Meeks
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class BallGameView extends JFrame
@@ -16,13 +17,15 @@ public class BallGameView extends JFrame
 
     private BallGame ref;
     private Ball ball;
+    private ArrayList<Ball> group;
     
     
-    public BallGameView(BallGame ref)
+    public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group)
     {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
+        this.group = group;
 
         // Constructs the window
         this.setTitle(TITLE);
@@ -58,9 +61,24 @@ public class BallGameView extends JFrame
         g.drawString("II", X_OFFSET + 20, Y_OFFSET + 140);
         g.drawString("II", X_OFFSET + 20, Y_OFFSET + 160);
     }
+    public void reset(Graphics g)
+    {
+        // Resets screen to white
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+    }
+    public void drawBalls(Graphics g)
+    {
+        for (int i = 0; i < 24; i++)
+        {
+            Ball b = group.get(i);
+            b.draw(g);
+        }
+    }
     public void paint(Graphics g) 
     {
-        ball.draw(g);
+        reset(g);
+
         if (ref.getGameState() == 0)
         {
             drawWelcome(g);
@@ -69,6 +87,12 @@ public class BallGameView extends JFrame
         if (ref.getGameState() == 1)
         {
             drawRules(g);
+        }
+        // Plays Game
+        if (ref.getGameState() == 2)
+        {
+//            ball.draw(g);
+            drawBalls(g);
         }
     }
 }
