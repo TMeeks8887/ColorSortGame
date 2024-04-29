@@ -42,29 +42,29 @@ public class Ball
     }
     public void iColors(int i)
     {
-        if (i == 1)
+        if (i == 0)
         {
             setColor(Color.RED);
         }
-        if (i == 2)
+        if (i == 1)
         {
             setColor(Color.ORANGE);
         }
-        if (i == 3)
+        if (i == 2)
         {
             setColor(Color.YELLOW);
         }
-        if (i == 4)
+        if (i == 3)
         {
             setColor(Color.BLUE);
         }
-        if (i == 5)
+        if (i == 4)
         {
             setColor(Color.BLACK);
         }
-        if (i == 6)
+        if (i == 5)
         {
-            setColor(Color.PINK);
+            setColor(Color.GREEN);
         }
     }
     public void setColor(Color colorIn)

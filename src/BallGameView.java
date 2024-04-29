@@ -17,15 +17,33 @@ public class BallGameView extends JFrame
 
     private BallGame ref;
     private Ball ball;
-    private ArrayList<Ball> group;
+    private ArrayList<Ball> MainGroup;
+    private ArrayList<Ball> group1;
+    private ArrayList<Ball> group2;
+    private ArrayList<Ball> group3;
+    private ArrayList<Ball> group4;
+    private ArrayList<Ball> group5;
+    private ArrayList<Ball> group6;
+    private ArrayList<Ball> group7;
+    private ArrayList<Ball> group8;
     
     
-    public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group)
+    public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
+                        ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
+                        ArrayList<Ball> group8)
     {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
-        this.group = group;
+        this.group1 = group1;
+        this.group2 = group2;
+        this.group3 = group3;
+        this.group4 = group4;
+        this.group5 = group5;
+        this.group6 = group6;
+        this.group7 = group7;
+        this.group8 = group8;
+
 
         // Constructs the window
         this.setTitle(TITLE);
@@ -83,9 +101,34 @@ public class BallGameView extends JFrame
     }
     public void drawBalls(Graphics g)
     {
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 4; i++)
         {
-            Ball b = group.get(i);
+            Ball b = group1.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Ball b = group2.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Ball b = group3.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Ball b = group4.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Ball b = group5.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            Ball b = group6.get(i);
             b.draw(g);
         }
     }
