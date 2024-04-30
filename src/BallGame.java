@@ -12,6 +12,8 @@ public class BallGame implements MouseListener, MouseMotionListener
     private Ball ball;
     private int gameState = 0;
     private int counter = 0;
+    public static final int DIAMETER = 20, GROUPONEX = 75, GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300;
+
     private ArrayList<Ball> MainGroup;
     private ArrayList<Ball> group1;
     private ArrayList<Ball> group2;
@@ -109,82 +111,50 @@ public class BallGame implements MouseListener, MouseMotionListener
 
         // If the ball is clicked
 
-        if (!group1.isEmpty())
-        {
-            if (group1.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group1.get(0).setCenter(x, y);
-                window.repaint();
-            }
-        }
+        topOfGroupClick(group1, x, y);
+        topOfGroupClick(group2, x, y);
+        topOfGroupClick(group3, x, y);
+        topOfGroupClick(group4, x, y);
+        topOfGroupClick(group5, x, y);
+        topOfGroupClick(group6, x, y);
+        topOfGroupClick(group7, x, y);
+        topOfGroupClick(group8, x, y);
+    }
 
-        if (!group2.isEmpty())
+    public void topOfGroupClick(ArrayList<Ball> group, int x, int y)
+    {
+        if (!group.isEmpty())
         {
-            if (group2.get(0).isClicked(x, y))
+            if (group.get(0).isClicked(x, y))
             {
                 // Move the ball and repaint.
-                group2.get(0).setCenter(x, y);
+                group.get(0).setCenter(x, y);
+                if (addToGroup(group) == 1)
+                {
+                    // How to break out of whole mouse dragged
+                    break;
+                }
                 window.repaint();
             }
         }
-
-        if (!group3.isEmpty())
+    }
+    public int addToGroup(ArrayList<Ball> group)
+    {
+        if ((group.get(0).getX() < (GROUPONEX + DIAMETER) && group.get(0).getX() > GROUPONEX) && (group.get(0).getY() >
+                GROUPONEY && group.get(0).getY() < (GROUPONEY + (DIAMETER * (4 - group1.size())))) && (group1.size() < 4))
         {
-            if (group3.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group3.get(0).setCenter(x, y);
-                window.repaint();
-            }
+            group1.add(0, group.remove(0));
+            group.get(0).setCenter(GROUPONEX, GROUPONEY + (DIAMETER * (3 - group1.size())));
+            return 1;
         }
-        if (!group4.isEmpty())
+        if ((group.get(0).getX() < (GROUPSEVENX + DIAMETER) && group.get(0).getX() > GROUPSEVENX) && (group.get(0).getY() >
+                GROUPSEVENY && group.get(0).getY() < (GROUPSEVENY + (DIAMETER * (4 - group7.size())))) && (group7.size() < 4))
         {
-            if (group4.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group4.get(0).setCenter(x, y);
-                window.repaint();
-            }
+            group7.add(0, group.remove(0));
+            group.get(0).setCenter(GROUPSEVENX, GROUPSEVENY + (DIAMETER * (3 - group7.size())));
+            return 1;
         }
-        if (!group5.isEmpty())
-        {
-            if (group5.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group5.get(0).setCenter(x, y);
-                window.repaint();
-            }
-        }
-
-        if (!group6.isEmpty())
-        {
-            if (group6.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group6.get(0).setCenter(x, y);
-                window.repaint();
-            }
-        }
-
-        if (!group7.isEmpty())
-        {
-            if (group7.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group7.get(0).setCenter(x, y);
-                window.repaint();
-            }
-        }
-        if (!group8.isEmpty())
-        {
-            if (group8.get(0).isClicked(x, y))
-            {
-                // Move the ball and repaint.
-                group8.get(0).setCenter(x, y);
-                window.repaint();
-            }
-        }
+        return 0;
     }
 
     @Override
