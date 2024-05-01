@@ -26,11 +26,12 @@ public class BallGameView extends JFrame
     private ArrayList<Ball> group6;
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
+    private Timer timer;
     
     
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
-                        ArrayList<Ball> group8)
+                        ArrayList<Ball> group8, Timer timer)
     {
         // Backend passed in
         this.ref = ref;
@@ -43,6 +44,7 @@ public class BallGameView extends JFrame
         this.group6 = group6;
         this.group7 = group7;
         this.group8 = group8;
+        this.timer = timer;
 
 
         // Constructs the window
@@ -149,6 +151,7 @@ public class BallGameView extends JFrame
         if (ref.getGameState() == 2)
         {
 //            ball.draw(g);
+            timer.start();
             drawBalls(g);
             drawVials(g);
         }

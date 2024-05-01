@@ -1,19 +1,18 @@
 // Teddy Meeks
+import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class BallGame implements MouseListener, MouseMotionListener
+public class BallGame implements MouseListener, MouseMotionListener, ActionListener
 {
     private BallGameView window;
     private Ball ball;
     private int gameState = 0;
     private int counter = 0;
-    public static final int DIAMETER = 20, GROUPONEX = 75, GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300;
-
+    public static final int DELAY = 20, DIAMETER = 20, GROUPONEX = 75, GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300;
+    private Timer timer;
     private ArrayList<Ball> MainGroup;
     private ArrayList<Ball> group1;
     private ArrayList<Ball> group2;
@@ -23,8 +22,9 @@ public class BallGame implements MouseListener, MouseMotionListener
     private ArrayList<Ball> group6;
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
-//    private int groupSize;
+    private ArrayList<ArrayList<Ball>> allGroups;
 
+//    private Ball clickedBall;
 
 
 
@@ -48,10 +48,11 @@ public class BallGame implements MouseListener, MouseMotionListener
         addToMiniGroup(group6);
         group7 = new ArrayList<Ball>();
         group8 = new ArrayList<Ball>();
-
+        allGroups = new ArrayList<ArrayList<Ball>>();
+        timer = new Timer(DELAY, this);
 
         this.ball = new Ball();
-        this.window = new BallGameView(this, ball, group1, group2, group3, group4, group5, group6, group7, group8);
+        this.window = new BallGameView(this, ball, group1, group2, group3, group4, group5, group6, group7, group8, timer);
 
         this.window.addMouseListener(this);
         this.window.addMouseMotionListener(this);
@@ -120,43 +121,60 @@ public class BallGame implements MouseListener, MouseMotionListener
         topOfGroupClick(group7, x, y);
         topOfGroupClick(group8, x, y);
     }
+    @Override
+    public void mouseReleased(MouseEvent e)
+    {
+//        for (int i)
+        addToGroup(group1, group1.get(0));
+        addToGroup(group2, group2.get(0));
+        addToGroup(group3, group3.get(0));
+        addToGroup(group4, group4.get(0));
+        addToGroup(group5, group5.get(0));
+        addToGroup(group6, group6.get(0));
+        addToGroup(group7, group7.get(0));
+        addToGroup(group8, group8.get(0));
+    }
 
-    public void topOfGroupClick(ArrayList<Ball> group, int x, int y)
+//    public void
+
+    public void topOfGroupClick(ArrayList<Ball> group, Ball ball, int x, int y)
     {
         if (!group.isEmpty())
         {
-            if (group.get(0).isClicked(x, y))
+            if (ball.isClicked(x, y))
             {
                 // Move the ball and repaint.
-                group.get(0).setCenter(x, y);
-                if (addToGroup(group) == 1)
-                {
-                    // How to break out of whole mouse dragged
-                    break;
-                }
-                window.repaint();
+                ball.setCenter(x, y);
             }
         }
     }
-    public int addToGroup(ArrayList<Ball> group)
+    public void addToGroup(ArrayList<Ball> group, Ball ball)
     {
-        if ((group.get(0).getX() < (GROUPONEX + DIAMETER) && group.get(0).getX() > GROUPONEX) && (group.get(0).getY() >
-                GROUPONEY && group.get(0).getY() < (GROUPONEY + (DIAMETER * (4 - group1.size())))) && (group1.size() < 4))
+        if ((ball.getX() < (GROUPONEX + DIAMETER) && ball.getX() > GROUPONEX) && (ball.getY() >
+                GROUPONEY && ball.getY() < (GROUPONEY + (DIAMETER * (4 - group1.size())))) && (group1.size() < 4))
         {
             group1.add(0, group.remove(0));
-            group.get(0).setCenter(GROUPONEX, GROUPONEY + (DIAMETER * (3 - group1.size())));
-            return 1;
+            ball.setCenter(GROUPONEX, GROUPONEY + (DIAMETER * (3 - group1.size())));
         }
-        if ((group.get(0).getX() < (GROUPSEVENX + DIAMETER) && group.get(0).getX() > GROUPSEVENX) && (group.get(0).getY() >
-                GROUPSEVENY && group.get(0).getY() < (GROUPSEVENY + (DIAMETER * (4 - group7.size())))) && (group7.size() < 4))
+        if ((ball.getX() < (GROUPSEVENX + DIAMETER) && ball.getX() > GROUPSEVENX) && (ball.getY() >
+                GROUPSEVENY && ball.getY() < (GROUPSEVENY + (DIAMETER * (4 - group7.size())))) && (group7.size() < 4))
         {
             group7.add(0, group.remove(0));
-            group.get(0).setCenter(GROUPSEVENX, GROUPSEVENY + (DIAMETER * (3 - group7.size())));
-            return 1;
+            ball.setCenter(GROUPSEVENX, GROUPSEVENY + (DIAMETER * (3 - group7.size())));
         }
-        return 0;
+        else
+        {
+//            ball.setCenter();
+            // return to original position
+        }
     }
 
+//    public int getGroupX(ArrayList<Ball> group)
+//    {
+    // returns what group its in then based on that returns the x and y of the original ball
+//        if (group.get)
+//        return GROUPONEX;
+//    }
     @Override
     public void mouseMoved(MouseEvent e) {
 
@@ -193,9 +211,14 @@ public class BallGame implements MouseListener, MouseMotionListener
     @Override
     public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
     public void mouseEntered(MouseEvent e) {}
     @Override
     public void mouseExited(MouseEvent e) {}
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        // constanly call repaint
+        window.repaint();
+    }
 }

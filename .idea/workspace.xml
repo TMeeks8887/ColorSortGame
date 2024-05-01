@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="got it so it's random and can only interact with top ball">
+    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="I think i have the basis to remove balls from groups and add them to others but it's very buggy so I'll want help, need to also know how to break a mouse dragged, could do this only when mouse isn't clicked??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BallGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BallGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714423461767</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="I think i have the basis to remove balls from groups and add them to others but it's very buggy so I'll want help, need to also know how to break a mouse dragged, could do this only when mouse isn't clicked??">
+      <option name="closed" value="true" />
+      <created>1714442207053</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714442207053</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +131,7 @@
     <MESSAGE value="figured out how to get as many balls as i want with being able to move them, and have the basics of welcome and rules, balls are in right place, need to put them into smaller groups to be able to check for victory, need to make sure you can't pick up multiple balls, get the balls with colors randomer" />
     <MESSAGE value="drew vials" />
     <MESSAGE value="got it so it's random and can only interact with top ball" />
-    <option name="LAST_COMMIT_MESSAGE" value="got it so it's random and can only interact with top ball" />
+    <MESSAGE value="I think i have the basis to remove balls from groups and add them to others but it's very buggy so I'll want help, need to also know how to break a mouse dragged, could do this only when mouse isn't clicked??" />
+    <option name="LAST_COMMIT_MESSAGE" value="I think i have the basis to remove balls from groups and add them to others but it's very buggy so I'll want help, need to also know how to break a mouse dragged, could do this only when mouse isn't clicked??" />
   </component>
 </project>
