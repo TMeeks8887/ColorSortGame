@@ -1,19 +1,17 @@
 // Teddy Meeks
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 
-public class BallGameView extends JFrame
-{
+public class BallGameView extends JFrame {
 
     public static final String TITLE = "Color Sort Game";
 
     public static final int
-            WIDTH = 600,
-            HEIGHT = 600,
-            Y_OFFSET = 42,
-            X_OFFSET = 20;
+            WIDTH = 600, HEIGHT = 600, Y_OFFSET = 42, X_OFFSET = 20, GROUPONEX = 75,
+            GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300, DIAMETER = 20, RADIUS = 10;
 
     private BallGame ref;
     private Ball ball;
@@ -27,12 +25,11 @@ public class BallGameView extends JFrame
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
     private Timer timer;
-    
-    
+
+
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
-                        ArrayList<Ball> group8, Timer timer)
-    {
+                        ArrayList<Ball> group8, Timer timer) {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
@@ -53,11 +50,11 @@ public class BallGameView extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(WIDTH, HEIGHT);
         this.setVisible(true);
+        createBufferStrategy(2);
     }
 
     // Draws the welcome screen
-    public void drawWelcome(Graphics g)
-    {
+    public void drawWelcome(Graphics g) {
         // Sets color to black because reset had color as white
         g.setColor(Color.BLACK);
 
@@ -67,8 +64,7 @@ public class BallGameView extends JFrame
     }
 
     // Draws the rules
-    public void drawRules(Graphics g)
-    {
+    public void drawRules(Graphics g) {
         // Sets color to black because reset had color as white
         g.setColor(Color.BLACK);
 
@@ -82,8 +78,7 @@ public class BallGameView extends JFrame
         g.drawString("II", X_OFFSET + 20, Y_OFFSET + 160);
     }
 
-    public void drawVials(Graphics g)
-    {
+    public void drawVials(Graphics g) {
         g.setColor(Color.BLACK);
 
         g.drawString("___", 65, 190);
@@ -95,46 +90,81 @@ public class BallGameView extends JFrame
         g.drawString("___", 365, 390);
         g.drawString("___", 515, 390);
     }
-    public void reset(Graphics g)
-    {
+
+    public void reset(Graphics g) {
         // Resets screen to white
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, WIDTH, HEIGHT);
     }
+
     public void drawBalls(Graphics g)
     {
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group1.size(); i++) {
             Ball b = group1.get(i);
             b.draw(g);
         }
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group2.size(); i++) {
             Ball b = group2.get(i);
             b.draw(g);
         }
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group3.size(); i++) {
             Ball b = group3.get(i);
             b.draw(g);
         }
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group4.size(); i++) {
             Ball b = group4.get(i);
             b.draw(g);
         }
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group5.size(); i++) {
             Ball b = group5.get(i);
             b.draw(g);
         }
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < group6.size(); i++) {
             Ball b = group6.get(i);
             b.draw(g);
         }
+        for (int i = 0; i < group7.size(); i++) {
+            Ball b = group7.get(i);
+            b.draw(g);
+        }
+        for (int i = 0; i < group8.size(); i++) {
+            Ball b = group8.get(i);
+            b.draw(g);
+        }
     }
-    public void paint(Graphics g) 
+    public void drawPlacementSquares(Graphics g)
+    {
+        g.setColor(Color.BLACK);
+
+        g.drawString("|", GROUPONEX - RADIUS, GROUPONEY);
+        g.drawString("|", GROUPONEX - RADIUS, GROUPONEY + RADIUS);
+        g.drawString("---", GROUPONEX - RADIUS, GROUPONEY + RADIUS);
+        g.drawString("|", GROUPONEX - RADIUS + DIAMETER, GROUPONEY);
+        g.drawString("|", GROUPONEX - RADIUS + DIAMETER, GROUPONEY + RADIUS);
+
+        g.drawString("|", GROUPSEVENX - RADIUS, GROUPSEVENY);
+        g.drawString("---", GROUPSEVENX - RADIUS, GROUPSEVENY + RADIUS);
+        g.drawString("|", GROUPSEVENX - RADIUS + DIAMETER, GROUPSEVENY);
+    }
+
+    public void paint(Graphics g)
+    {
+        // Taken from Aquarium
+        BufferStrategy bf = this.getBufferStrategy();
+        if (bf == null)
+            return;
+        Graphics g2 = null;
+        try {
+            g2 = bf.getDrawGraphics();
+            myPaint(g2);
+        } finally {
+            g2.dispose();
+        }
+        bf.show();
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    public void myPaint(Graphics g)
     {
         reset(g);
 
@@ -151,9 +181,9 @@ public class BallGameView extends JFrame
         if (ref.getGameState() == 2)
         {
 //            ball.draw(g);
-            timer.start();
             drawBalls(g);
             drawVials(g);
+            drawPlacementSquares(g);
         }
     }
 }

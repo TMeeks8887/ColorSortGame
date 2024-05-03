@@ -11,7 +11,9 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     private Ball ball;
     private int gameState = 0;
     private int counter = 0;
-    public static final int DELAY = 20, DIAMETER = 20, GROUPONEX = 75, GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300;
+    public static final int DELAY = 20, DIAMETER = 20, GROUPONEX = 75, GROUPTWOX = 225, GROUPTHREEX = 375, GROUPFOURX = 525,
+            GROUPFIVEX = 75, GROUPSIXX = 225, GROUPSEVENX = 375, GROUPEIGHTX = 525,
+            TOPGROUPSY = 100, BOTTOMGROUPSY = 300, RADIUS = 10, DIFFERENCEX = 150, DIFFERENCEY = 25;
     private Timer timer;
     private ArrayList<Ball> MainGroup;
     private ArrayList<Ball> group1;
@@ -64,7 +66,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         {
             for (int j = 0; j < 4; j++)
             {
-                Ball b = new Ball(75 + 150 * i, 100 + 25 * j, 5, 4, 10, Color.RED);
+                Ball b = new Ball(GROUPONEX + DIFFERENCEX * i, TOPGROUPSY + DIFFERENCEY * j, 5, 4, RADIUS, Color.RED);
                 b.iColors(i);
                 MainGroup.add(b);
             }
@@ -73,7 +75,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         {
             for (int j = 0; j < 4; j++)
             {
-                Ball b = new Ball(75 + 150 * i, 300 + 25 * j, 5, 4, 10, Color.RED);
+                Ball b = new Ball(GROUPONEX + DIFFERENCEX * i, BOTTOMGROUPSY + DIFFERENCEY * j, 5, 4, RADIUS, Color.RED);
                 int k = i + 4;
                 b.iColors(k);
                 MainGroup.add(b);
@@ -112,14 +114,14 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
 
         // If the ball is clicked
 
-        topOfGroupClick(group1, x, y);
-        topOfGroupClick(group2, x, y);
-        topOfGroupClick(group3, x, y);
-        topOfGroupClick(group4, x, y);
-        topOfGroupClick(group5, x, y);
-        topOfGroupClick(group6, x, y);
-        topOfGroupClick(group7, x, y);
-        topOfGroupClick(group8, x, y);
+        topOfGroupClick(group1, group1.get(0), x, y);
+        topOfGroupClick(group2, group2.get(0), x, y);
+        topOfGroupClick(group3, group3.get(0), x, y);
+        topOfGroupClick(group4, group4.get(0), x, y);
+        topOfGroupClick(group5, group5.get(0), x, y);
+        topOfGroupClick(group6, group6.get(0), x, y);
+        topOfGroupClick(group7, group7.get(0), x, y);
+        topOfGroupClick(group8, group8.get(0), x, y);
     }
     @Override
     public void mouseReleased(MouseEvent e)
@@ -150,23 +152,59 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     }
     public void addToGroup(ArrayList<Ball> group, Ball ball)
     {
-        if ((ball.getX() < (GROUPONEX + DIAMETER) && ball.getX() > GROUPONEX) && (ball.getY() >
-                GROUPONEY && ball.getY() < (GROUPONEY + (DIAMETER * (4 - group1.size())))) && (group1.size() < 4))
+        if ((ball.getX() < (GROUPONEX - RADIUS + DIAMETER) && ball.getX() > GROUPONEX - RADIUS) && (ball.getY() >
+                TOPGROUPSY && ball.getY() < (TOPGROUPSY + (DIAMETER * (4 - group1.size())))) && (group1.size() < 4))
         {
+            ball.setCenter(GROUPONEX, TOPGROUPSY + (DIFFERENCEY* (3 - group1.size())));
             group1.add(0, group.remove(0));
-            ball.setCenter(GROUPONEX, GROUPONEY + (DIAMETER * (3 - group1.size())));
         }
-        if ((ball.getX() < (GROUPSEVENX + DIAMETER) && ball.getX() > GROUPSEVENX) && (ball.getY() >
-                GROUPSEVENY && ball.getY() < (GROUPSEVENY + (DIAMETER * (4 - group7.size())))) && (group7.size() < 4))
+        if ((ball.getX() < (GROUPTWOX - RADIUS + DIAMETER) && ball.getX() > GROUPTWOX - RADIUS) && (ball.getY() >
+                TOPGROUPSY && ball.getY() < (TOPGROUPSY + (DIAMETER * (4 - group2.size())))) && (group2.size() < 4))
         {
+            ball.setCenter(GROUPTWOX, TOPGROUPSY + (DIFFERENCEY * (3 - group2.size())));
+            group2.add(0, group.remove(0));
+        }
+        if ((ball.getX() < (GROUPTHREEX - RADIUS + DIAMETER) && ball.getX() > GROUPTHREEX - RADIUS) && (ball.getY() >
+                TOPGROUPSY && ball.getY() < (TOPGROUPSY + (DIAMETER * (4 - group3.size())))) && (group3.size() < 4))
+        {
+            ball.setCenter(GROUPTHREEX, TOPGROUPSY + (DIFFERENCEY  * (3 - group3.size())));
+            group3.add(0, group.remove(0));
+        }
+        if ((ball.getX() < (GROUPFOURX - RADIUS + DIAMETER) && ball.getX() > GROUPFOURX - RADIUS) && (ball.getY() >
+                TOPGROUPSY && ball.getY() < (TOPGROUPSY + (DIAMETER * (4 - group4.size())))) && (group4.size() < 4))
+        {
+            ball.setCenter(GROUPFOURX, TOPGROUPSY + (DIFFERENCEY  * (3 - group4.size())));
+            group4.add(0, group.remove(0));
+        }
+        if ((ball.getX() < (GROUPFIVEX - RADIUS + DIAMETER) && ball.getX() > GROUPFIVEX - RADIUS) && (ball.getY() >
+                BOTTOMGROUPSY && ball.getY() < (BOTTOMGROUPSY + (DIAMETER * (4 - group5.size())))) && (group5.size() < 4))
+        {
+            ball.setCenter(GROUPFIVEX, BOTTOMGROUPSY + (DIFFERENCEY  * (3 - group5.size())));
+            group5.add(0, group.remove(0));
+        }
+        if ((ball.getX() < (GROUPSIXX - RADIUS + DIAMETER) && ball.getX() > GROUPSIXX - RADIUS) && (ball.getY() >
+                BOTTOMGROUPSY && ball.getY() < (BOTTOMGROUPSY + (DIAMETER * (4 - group6.size())))) && (group6.size() < 4))
+        {
+            ball.setCenter(GROUPSIXX, BOTTOMGROUPSY + (DIFFERENCEY * (3 - group6.size())));
+            group6.add(0, group.remove(0));
+        }
+        if ((ball.getX() < (GROUPSEVENX - RADIUS + DIAMETER) && ball.getX() > GROUPSEVENX - RADIUS) && (ball.getY() >
+                BOTTOMGROUPSY && ball.getY() < (BOTTOMGROUPSY + (DIAMETER * (4 - group7.size())))) && (group7.size() < 4))
+        {
+            ball.setCenter(GROUPSEVENX, BOTTOMGROUPSY + (DIFFERENCEY  * (3 - group7.size())));
             group7.add(0, group.remove(0));
-            ball.setCenter(GROUPSEVENX, GROUPSEVENY + (DIAMETER * (3 - group7.size())));
         }
-        else
+        if ((ball.getX() < (GROUPEIGHTX - RADIUS + DIAMETER) && ball.getX() > GROUPEIGHTX - RADIUS) && (ball.getY() >
+                BOTTOMGROUPSY && ball.getY() < (BOTTOMGROUPSY + (DIAMETER * (4 - group8.size())))) && (group8.size() < 4))
         {
-//            ball.setCenter();
-            // return to original position
+            ball.setCenter(GROUPEIGHTX, BOTTOMGROUPSY + (DIFFERENCEY  * (3 - group8.size())));
+            group8.add(0, group.remove(0));
         }
+//        else
+//        {
+//            // return to original position
+//            ball.setCenter(75, 100);
+//        }
     }
 
 //    public int getGroupX(ArrayList<Ball> group)
@@ -191,7 +229,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     }
     public void playBallGame()
     {
-
+        timer.start();
     }
     public static void main(String[] args)
     {
