@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="buddy ion even know chat">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BallGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BallGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGameView.java" afterDir="false" />
-    </list>
+    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714589080033</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things">
+      <option name="closed" value="true" />
+      <created>1714755353309</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714755353309</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -141,6 +145,7 @@
     <MESSAGE value="got it so it's random and can only interact with top ball" />
     <MESSAGE value="I think i have the basis to remove balls from groups and add them to others but it's very buggy so I'll want help, need to also know how to break a mouse dragged, could do this only when mouse isn't clicked??" />
     <MESSAGE value="buddy ion even know chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="buddy ion even know chat" />
+    <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things" />
+    <option name="LAST_COMMIT_MESSAGE" value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things" />
   </component>
 </project>

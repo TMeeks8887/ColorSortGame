@@ -69,13 +69,13 @@ public class BallGameView extends JFrame {
         g.setColor(Color.BLACK);
 
         g.drawString("Rules: ", X_OFFSET + 20, Y_OFFSET + 20);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 40);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 60);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 80);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 100);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 120);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 140);
-        g.drawString("II", X_OFFSET + 20, Y_OFFSET + 160);
+        g.drawString("There are 4 of each colored ball", X_OFFSET + 20, Y_OFFSET + 40);
+        g.drawString("Your job is to sort them into the containers", X_OFFSET + 20, Y_OFFSET + 60);
+        g.drawString("You can only interact with the top ball of each group", X_OFFSET + 20, Y_OFFSET + 80);
+        g.drawString("to sort them you drag the ball and release it above the group where the marking says to", X_OFFSET + 20, Y_OFFSET + 100);
+        g.drawString("There are only markings for groups 1 and 7 so far, release on the same x values as those", X_OFFSET + 20, Y_OFFSET + 120);
+        g.drawString("There is no win check or screen win", X_OFFSET + 20, Y_OFFSET + 140);
+        g.drawString("There also is'nt a reset of the balls position to it's original group yet", X_OFFSET + 20, Y_OFFSET + 160);
     }
 
     public void drawVials(Graphics g) {
