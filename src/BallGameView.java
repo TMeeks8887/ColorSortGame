@@ -10,8 +10,9 @@ public class BallGameView extends JFrame {
     public static final String TITLE = "Color Sort Game";
 
     public static final int
-            WIDTH = 600, HEIGHT = 600, Y_OFFSET = 42, X_OFFSET = 20, GROUPONEX = 75,
-            GROUPONEY = 100, GROUPSEVENX = 375, GROUPSEVENY = 300, DIAMETER = 20, RADIUS = 10;
+            WIDTH = 600, HEIGHT = 600, Y_OFFSET = 42, X_OFFSET = 20, GROUPONEX = 75, GROUPTWOX = 225, GROUPTHREEX = 375, GROUPFOURX = 525,
+            GROUPFIVEX = 75, GROUPSIXX = 225, GROUPSEVENX = 375, GROUPEIGHTX = 525,
+            TOPGROUPSY = 100, BOTTOMGROUPSY = 300, DIAMETER = 20, RADIUS = 10;
 
     private BallGame ref;
     private Ball ball;
@@ -25,12 +26,12 @@ public class BallGameView extends JFrame {
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
     private Timer timer;
-    private boolean won;
+
 
 
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
-                        ArrayList<Ball> group8, Timer timer, boolean won) {
+                        ArrayList<Ball> group8, Timer timer) {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
@@ -43,7 +44,6 @@ public class BallGameView extends JFrame {
         this.group7 = group7;
         this.group8 = group8;
         this.timer = timer;
-        this.won = won;
 
 
         // Constructs the window
@@ -138,21 +138,21 @@ public class BallGameView extends JFrame {
     {
         g.setColor(Color.BLACK);
 
-        g.drawString("|", GROUPONEX - RADIUS, GROUPONEY);
-        g.drawString("|", GROUPONEX - RADIUS, GROUPONEY + RADIUS);
-        g.drawString("---", GROUPONEX - RADIUS, GROUPONEY + RADIUS);
-        g.drawString("|", GROUPONEX - RADIUS + DIAMETER, GROUPONEY);
-        g.drawString("|", GROUPONEX - RADIUS + DIAMETER, GROUPONEY + RADIUS);
-
-        g.drawString("|", GROUPSEVENX - RADIUS, GROUPSEVENY);
-        g.drawString("---", GROUPSEVENX - RADIUS, GROUPSEVENY + RADIUS);
-        g.drawString("|", GROUPSEVENX - RADIUS + DIAMETER, GROUPSEVENY);
+        g.drawString("---", GROUPONEX - RADIUS, TOPGROUPSY + RADIUS);
+        g.drawString("---", GROUPTWOX - RADIUS, TOPGROUPSY + RADIUS);
+        g.drawString("---", GROUPTHREEX - RADIUS, TOPGROUPSY + RADIUS);
+        g.drawString("---", GROUPFOURX - RADIUS, TOPGROUPSY + RADIUS);
+        g.drawString("---", GROUPFIVEX - RADIUS, BOTTOMGROUPSY + RADIUS);
+        g.drawString("---", GROUPSIXX - RADIUS, BOTTOMGROUPSY + RADIUS);
+        g.drawString("---", GROUPSEVENX - RADIUS, BOTTOMGROUPSY + RADIUS);
+        g.drawString("---", GROUPEIGHTX - RADIUS, BOTTOMGROUPSY + RADIUS);
     }
     public void drawWon(Graphics g)
     {
         g.setColor(Color.BLACK);
 
         g.drawString("YOU WIN", 100, 100);
+        g.drawString("Click here to play again", 100, 300);
 
     }
 
@@ -187,13 +187,13 @@ public class BallGameView extends JFrame {
             drawRules(g);
         }
         // Plays Game
-        if (ref.getGameState() == 2 && won == false)
+        if (ref.getGameState() == 2)
         {
             drawBalls(g);
             drawVials(g);
             drawPlacementSquares(g);
         }
-        if (ref.getGameState() == 3 && won == true)
+        if (ref.getGameState() == 3)
         {
             drawWon(g);
         }

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smaller functions for a lot of things, added temp rules">
+    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BallGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BallGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGameView.java" afterDir="false" />
     </list>
@@ -135,7 +134,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714803616581</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though">
+      <option name="closed" value="true" />
+      <created>1714972402328</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714972402328</updated>
+    </task>
+    <task id="LOCAL-00012" summary="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though">
+      <option name="closed" value="true" />
+      <created>1714972519339</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1714972519339</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +175,7 @@
     <MESSAGE value="buddy ion even know chat" />
     <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things" />
     <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smaller functions for a lot of things, added temp rules" />
-    <option name="LAST_COMMIT_MESSAGE" value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smaller functions for a lot of things, added temp rules" />
+    <MESSAGE value="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though" />
+    <option name="LAST_COMMIT_MESSAGE" value="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though" />
   </component>
 </project>

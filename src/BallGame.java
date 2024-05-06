@@ -11,11 +11,11 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     private Ball ball;
     private int gameState = 0;
     private int counter = 0;
+    private int winCount = 0;
     public static final int DELAY = 20, DIAMETER = 20, GROUPONEX = 75, GROUPTWOX = 225, GROUPTHREEX = 375, GROUPFOURX = 525,
             GROUPFIVEX = 75, GROUPSIXX = 225, GROUPSEVENX = 375, GROUPEIGHTX = 525,
             TOPGROUPSY = 100, BOTTOMGROUPSY = 300, RADIUS = 10, DIFFERENCEX = 150, DIFFERENCEY = 25;
     private Timer timer;
-    private boolean won = false;
     private ArrayList<Ball> MainGroup;
     private ArrayList<Ball> group1;
     private ArrayList<Ball> group2;
@@ -55,7 +55,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         timer = new Timer(DELAY, this);
 
         this.ball = new Ball();
-        this.window = new BallGameView(this, ball, group1, group2, group3, group4, group5, group6, group7, group8, timer, won);
+        this.window = new BallGameView(this, ball, group1, group2, group3, group4, group5, group6, group7, group8, timer);
 
         this.window.addMouseListener(this);
         this.window.addMouseMotionListener(this);
@@ -127,31 +127,25 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     @Override
     public void mouseReleased(MouseEvent e)
     {
-//        for (int i)
-        if (!group1.isEmpty()) {
-            addToGroup(group1, group1.get(0));
+        checkEmptyAddToGroup(group1);
+        checkEmptyAddToGroup(group2);
+        checkEmptyAddToGroup(group3);
+        checkEmptyAddToGroup(group4);
+        checkEmptyAddToGroup(group5);
+        checkEmptyAddToGroup(group6);
+        checkEmptyAddToGroup(group7);
+        checkEmptyAddToGroup(group8);
+        goThorughCheckWin();
+    }
+
+    public void checkEmptyAddToGroup(ArrayList<Ball> group)
+    {
+        if (!group.isEmpty()) {
+            addToGroup(group, group.get(0));
         }
-        if (!group2.isEmpty()) {
-            addToGroup(group2, group2.get(0));
-        }
-        if (!group3.isEmpty()) {
-            addToGroup(group3, group3.get(0));
-        }
-        if (!group4.isEmpty()) {
-            addToGroup(group4, group4.get(0));
-        }
-        if (!group5.isEmpty()) {
-            addToGroup(group5, group5.get(0));
-        }
-        if (!group6.isEmpty()) {
-            addToGroup(group6, group6.get(0));
-        }
-        if (!group7.isEmpty()) {
-            addToGroup(group7, group7.get(0));
-        }
-        if (!group8.isEmpty()) {
-            addToGroup(group8, group8.get(0));
-        }
+    }
+    public void goThorughCheckWin()
+    {
         int count = 0;
         for (int i = 0; i < 8; i++)
         {
@@ -161,15 +155,13 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
                 {
                     count++;
                 }
-                if (count == 6)
+                if (count == 6 && winCount == 0)
                 {
                     checkWin();
                 }
             }
         }
     }
-
-//    public void
 
     public void topOfGroupClick(ArrayList<Ball> group, int x, int y)
     {
@@ -232,20 +224,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
             ball.setCenter(GROUPEIGHTX, BOTTOMGROUPSY + (DIFFERENCEY  * (3 - group8.size())));
             group8.add(0, group.remove(0));
         }
-//        else
-//        {
-//            // return to original position
-//            ball.setCenter(75, 100);
-//        }
     }
-
-
-//    public int getGroupX(ArrayList<Ball> group)
-//    {
-    // returns what group its in then based on that returns the x and y of the original ball
-//        if (group.get)
-//        return GROUPONEX;
-//    }
 
     // Check win
     public void checkWin()
@@ -258,12 +237,11 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
                         allGroups.get(i).get(2).getColor().equals(allGroups.get(i).get(3).getColor()) &&
                         allGroups.get(i).get(0).getColor().equals(allGroups.get(i).get(2).getColor())))
                 {
-                    won = false;
                     return;
                 }
             }
         }
-        won = true;
+        winCount = 1;
         goThroughGameState();
     }
     @Override
@@ -304,6 +282,12 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         if (gameState < 2)
         {
             goThroughGameState();
+        }
+        if (gameState == 3)
+        {
+            BallGame game = new BallGame();
+            game.playBallGame();
+            window.setVisible(false);
         }
     }
 
