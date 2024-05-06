@@ -189,7 +189,6 @@ public class BallGameView extends JFrame {
         // Plays Game
         if (ref.getGameState() == 2 && won == false)
         {
-//            ball.draw(g);
             drawBalls(g);
             drawVials(g);
             drawPlacementSquares(g);

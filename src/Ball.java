@@ -28,6 +28,7 @@ public class Ball
         this.color = color;
     }
 
+
     public int getX() {
         return x;
     }

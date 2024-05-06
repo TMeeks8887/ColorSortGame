@@ -239,6 +239,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
 //        }
     }
 
+
 //    public int getGroupX(ArrayList<Ball> group)
 //    {
     // returns what group its in then based on that returns the x and y of the original ball
