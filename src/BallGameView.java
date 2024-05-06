@@ -25,11 +25,12 @@ public class BallGameView extends JFrame {
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
     private Timer timer;
+    private boolean won;
 
 
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
-                        ArrayList<Ball> group8, Timer timer) {
+                        ArrayList<Ball> group8, Timer timer, boolean won) {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
@@ -42,6 +43,7 @@ public class BallGameView extends JFrame {
         this.group7 = group7;
         this.group8 = group8;
         this.timer = timer;
+        this.won = won;
 
 
         // Constructs the window
@@ -146,6 +148,13 @@ public class BallGameView extends JFrame {
         g.drawString("---", GROUPSEVENX - RADIUS, GROUPSEVENY + RADIUS);
         g.drawString("|", GROUPSEVENX - RADIUS + DIAMETER, GROUPSEVENY);
     }
+    public void drawWon(Graphics g)
+    {
+        g.setColor(Color.BLACK);
+
+        g.drawString("YOU WIN", 100, 100);
+
+    }
 
     public void paint(Graphics g)
     {
@@ -178,12 +187,16 @@ public class BallGameView extends JFrame {
             drawRules(g);
         }
         // Plays Game
-        if (ref.getGameState() == 2)
+        if (ref.getGameState() == 2 && won == false)
         {
 //            ball.draw(g);
             drawBalls(g);
             drawVials(g);
             drawPlacementSquares(g);
+        }
+        if (ref.getGameState() == 3 && won == true)
+        {
+            drawWon(g);
         }
     }
 }

@@ -36,6 +36,10 @@ public class Ball
         return y;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
