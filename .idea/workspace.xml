@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though">
+    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="done with like everything">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BallGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BallGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGameView.java" afterDir="false" />
@@ -150,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714972519339</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="done with like everything">
+      <option name="closed" value="true" />
+      <created>1715032764608</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715032764608</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +184,7 @@
     <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smal;ler functions for a lot of things" />
     <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smaller functions for a lot of things, added temp rules" />
     <MESSAGE value="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though" />
-    <option name="LAST_COMMIT_MESSAGE" value="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though" />
+    <MESSAGE value="done with like everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with like everything" />
   </component>
 </project>

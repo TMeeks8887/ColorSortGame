@@ -25,13 +25,14 @@ public class BallGameView extends JFrame {
     private ArrayList<Ball> group6;
     private ArrayList<Ball> group7;
     private ArrayList<Ball> group8;
+    private ArrayList<ArrayList<Ball>> allGroups;
     private Timer timer;
 
 
 
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
-                        ArrayList<Ball> group8, Timer timer) {
+                        ArrayList<Ball> group8, Timer timer, ArrayList<ArrayList<Ball>> allGroups) {
         // Backend passed in
         this.ref = ref;
         this.ball = ball;
@@ -44,6 +45,7 @@ public class BallGameView extends JFrame {
         this.group7 = group7;
         this.group8 = group8;
         this.timer = timer;
+        this.allGroups = allGroups;
 
 
         // Constructs the window
@@ -63,6 +65,8 @@ public class BallGameView extends JFrame {
         g.drawString("Hello! ", X_OFFSET + 20, Y_OFFSET + 20);
         g.drawString("Thank you for playing Color Sort Ball Game! ", X_OFFSET + 20, Y_OFFSET + 40);
         g.drawString("by Teddy Meeks", X_OFFSET + 20, Y_OFFSET + 60);
+        g.drawString("(Click to move to the next screen)", X_OFFSET + 20, Y_OFFSET + 100);
+        g.drawString("(If it doesn't go to the next screen try clicking again)", X_OFFSET + 20, Y_OFFSET + 120);
     }
 
     // Draws the rules
@@ -72,25 +76,29 @@ public class BallGameView extends JFrame {
 
         g.drawString("Rules: ", X_OFFSET + 20, Y_OFFSET + 20);
         g.drawString("There are 4 of each colored ball", X_OFFSET + 20, Y_OFFSET + 40);
-        g.drawString("Your job is to sort them into the containers", X_OFFSET + 20, Y_OFFSET + 60);
+        g.drawString("Your job is to sort the balls with the same color into the containers", X_OFFSET + 20, Y_OFFSET + 60);
         g.drawString("You can only interact with the top ball of each group", X_OFFSET + 20, Y_OFFSET + 80);
-        g.drawString("to sort them you drag the ball and release it above the group where the marking says to", X_OFFSET + 20, Y_OFFSET + 100);
-        g.drawString("There are only markings for groups 1 and 7 so far, release on the same x values as those", X_OFFSET + 20, Y_OFFSET + 120);
-        g.drawString("There is no win check or screen win", X_OFFSET + 20, Y_OFFSET + 140);
-        g.drawString("There also is'nt a reset of the balls position to it's original group yet", X_OFFSET + 20, Y_OFFSET + 160);
+        g.drawString("To sort them you drag the ball and release it covering fully where the marking says to", X_OFFSET + 20, Y_OFFSET + 100);
+        g.drawString("If you want to move two balls at once you can drag over both", X_OFFSET + 20, Y_OFFSET + 120);
+        g.drawString("when you drop them they will each appear", X_OFFSET + 20, Y_OFFSET + 140);
+        g.drawString("It will not show both balls when moving them", X_OFFSET + 20, Y_OFFSET + 160);
+        g.drawString("Try not to drag over the top ball in a group while moving a ball unless you want to move both", X_OFFSET + 20, Y_OFFSET + 180);
+        g.drawString("Try to drag the ball slowly, it sometimes lets go if you drag too fast", X_OFFSET + 20, Y_OFFSET + 200);
+        g.drawString("(Click to move to the next screen)", X_OFFSET + 20, Y_OFFSET + 240);
+        g.drawString("(If it doesn't go to the next screen try clicking again)", X_OFFSET + 20, Y_OFFSET + 260);
     }
 
     public void drawVials(Graphics g) {
         g.setColor(Color.BLACK);
 
-        g.drawString("___", 65, 190);
-        g.drawString("___", 215, 190);
-        g.drawString("___", 365, 190);
-        g.drawString("___", 515, 190);
-        g.drawString("___", 65, 390);
-        g.drawString("___", 215, 390);
-        g.drawString("___", 365, 390);
-        g.drawString("___", 515, 390);
+        g.drawString("___", GROUPONEX - RADIUS, TOPGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPTWOX - RADIUS, TOPGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPTHREEX - RADIUS, TOPGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPFOURX - RADIUS, TOPGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPFIVEX - RADIUS, BOTTOMGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPSIXX - RADIUS, BOTTOMGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPSEVENX - RADIUS, BOTTOMGROUPSY + (4 * DIAMETER) + RADIUS);
+        g.drawString("___", GROUPEIGHTX - RADIUS, BOTTOMGROUPSY + (4 * DIAMETER) + RADIUS);
     }
 
     public void reset(Graphics g) {
@@ -101,37 +109,13 @@ public class BallGameView extends JFrame {
 
     public void drawBalls(Graphics g)
     {
-        for (int i = 0; i < group1.size(); i++) {
-            Ball b = group1.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group2.size(); i++) {
-            Ball b = group2.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group3.size(); i++) {
-            Ball b = group3.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group4.size(); i++) {
-            Ball b = group4.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group5.size(); i++) {
-            Ball b = group5.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group6.size(); i++) {
-            Ball b = group6.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group7.size(); i++) {
-            Ball b = group7.get(i);
-            b.draw(g);
-        }
-        for (int i = 0; i < group8.size(); i++) {
-            Ball b = group8.get(i);
-            b.draw(g);
+        // Go through each group and draw their balls
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < allGroups.get(i).size(); j++) {
+                Ball b = allGroups.get(i).get(j);
+                b.draw(g);
+            }
         }
     }
     public void drawPlacementSquares(Graphics g)
@@ -152,7 +136,8 @@ public class BallGameView extends JFrame {
         g.setColor(Color.BLACK);
 
         g.drawString("YOU WIN", 100, 100);
-        g.drawString("Click here to play again", 100, 300);
+        g.drawString("Click to play again", 100, 300);
+        g.drawString("(If it doesn't work try clicking again)", X_OFFSET + 20, Y_OFFSET + 320);
 
     }
 
@@ -177,6 +162,7 @@ public class BallGameView extends JFrame {
     {
         reset(g);
 
+        // Draw welcome
         if (ref.getGameState() == 0)
         {
             drawWelcome(g);
