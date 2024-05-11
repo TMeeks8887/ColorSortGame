@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class BallGame implements MouseListener, MouseMotionListener, ActionListener
 {
+    // Instance Variables
     private BallGameView window;
     private Ball ball;
     private int gameState = 0;
@@ -16,6 +17,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
             GROUPFIVEX = 75, GROUPSIXX = 225, GROUPSEVENX = 375, GROUPEIGHTX = 525,
             TOPGROUPSY = 100, BOTTOMGROUPSY = 300, RADIUS = 10, DIFFERENCEX = 150, DIFFERENCEY = 25;
     private Timer timer;
+    // All the groups
     private ArrayList<Ball> MainGroup;
     private ArrayList<Ball> group1;
     private ArrayList<Ball> group2;
@@ -31,11 +33,12 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
 
 
 
+    // Constructor
     public BallGame()
     {
+        // Adds to main, then to the minis, then adds the groups to allgroups
         MainGroup = new ArrayList<Ball>();
         addToMainGroup(MainGroup);
-//        groupSize = MainGroup.size();
 
         group1 = new ArrayList<Ball>();
         addToMiniGroup(group1);
@@ -54,6 +57,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         allGroups = new ArrayList<ArrayList<Ball>>();
         timer = new Timer(DELAY, this);
 
+        // Passes into view
         this.ball = new Ball();
         this.window = new BallGameView(this, ball, group1, group2, group3, group4, group5, group6, group7, group8,
                 timer, allGroups);
@@ -62,6 +66,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         this.window.addMouseMotionListener(this);
     }
 
+    // Adds balls to a main group to be added to mini groups from it
     public void addToMainGroup(ArrayList<Ball> MainGroup)
     {
         for (int i = 0; i < 4; i++)
@@ -84,6 +89,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
             }
         }
     }
+    // Adds the balls randomly to mini groups
     public void addToMiniGroup(ArrayList<Ball> MiniGroup)
     {
         for (int i = 0; i < 4; i++)
@@ -107,6 +113,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     }
 
 
+    // Mouse dragged
     @Override
     public void mouseDragged(MouseEvent e) 
     {
@@ -118,6 +125,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
 
         for (int i = 0; i < 8; i++)
         {
+            // Makes it check for top of group
             topOfGroupClick(allGroups.get(i), x, y);
         }
     }
@@ -126,8 +134,10 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
     {
         for (int i = 0; i < 8; i++)
         {
+            // If mouse is released it'll check and see if it should add to new group
             checkEmptyAddToGroup(allGroups.get(i));
         }
+        // Checks if you won as well
         goThorughCheckWin();
     }
 
@@ -137,6 +147,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
             addToGroup(group, group.get(0));
         }
     }
+    // Checks if it should check win by checking if there are 6 groups with 4 balls
     public void goThorughCheckWin()
     {
         int count = 0;
@@ -149,6 +160,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
                 {
                     count++;
                 }
+                // Also checks if wincount is 0 so it doesn't check win each time you click after
                 if (count == 6 && winCount == 0)
                 {
                     checkWin();
@@ -157,6 +169,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         }
     }
 
+    // Checks if the top ball in a group is clicked
     public void topOfGroupClick(ArrayList<Ball> group, int x, int y)
     {
         //checks if top of group is clicked
@@ -169,6 +182,9 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
             }
         }
     }
+    // Goes through each groups x and y value and checks if the ball is released over the place where it can be added
+    // I could've made an array with all the different x's and y's in it to go through so it can be a loop,
+    // However it seemed tough
     public void addToGroup(ArrayList<Ball> group, Ball ball)
     {
         // Goes through and checks location to see if ball should be added to a group
@@ -237,6 +253,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         {
             if (!allGroups.get(i).isEmpty())
             {
+                // If all colors in every group are the same within the group you win
                 if (!(allGroups.get(i).get(0).getColor().equals(allGroups.get(i).get(1).getColor()) &&
                         allGroups.get(i).get(2).getColor().equals(allGroups.get(i).get(3).getColor()) &&
                         allGroups.get(i).get(0).getColor().equals(allGroups.get(i).get(2).getColor())))
@@ -257,11 +274,13 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         return gameState;
     }
 
+    // Goes through gameState to paint the right thing
     public void goThroughGameState()
     {
         gameState++;
         window.repaint();
     }
+    // Starts timer and adds groups to allGroups
     public void playBallGame()
     {
         timer.start();
@@ -280,6 +299,7 @@ public class BallGame implements MouseListener, MouseMotionListener, ActionListe
         game.playBallGame();
     }
 
+    // Goes thtough gameStates when ckicked, except at gameState 2
     @Override
     public void mouseClicked(MouseEvent e)
     {

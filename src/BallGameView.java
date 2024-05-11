@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class BallGameView extends JFrame {
 
+    // Instance variables
     public static final String TITLE = "Color Sort Game";
 
     public static final int
@@ -30,6 +31,7 @@ public class BallGameView extends JFrame {
 
 
 
+    // Constructor
     public BallGameView(BallGame ref, Ball ball, ArrayList<Ball> group1, ArrayList<Ball> group2, ArrayList<Ball> group3,
                         ArrayList<Ball> group4, ArrayList<Ball> group5, ArrayList<Ball> group6, ArrayList<Ball> group7,
                         ArrayList<Ball> group8, Timer timer, ArrayList<ArrayList<Ball>> allGroups) {
@@ -88,6 +90,7 @@ public class BallGameView extends JFrame {
         g.drawString("(If it doesn't go to the next screen try clicking again)", X_OFFSET + 20, Y_OFFSET + 260);
     }
 
+    // Draws the bottom of where the groups are
     public void drawVials(Graphics g) {
         g.setColor(Color.BLACK);
 
@@ -101,12 +104,14 @@ public class BallGameView extends JFrame {
         g.drawString("___", GROUPEIGHTX - RADIUS, BOTTOMGROUPSY + (4 * DIAMETER) + RADIUS);
     }
 
+    // Resets screen to white
     public void reset(Graphics g) {
         // Resets screen to white
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, WIDTH, HEIGHT);
     }
 
+    // Draws all the balls
     public void drawBalls(Graphics g)
     {
         // Go through each group and draw their balls
@@ -118,6 +123,7 @@ public class BallGameView extends JFrame {
             }
         }
     }
+    // Draws where the top of the group is for the person to drop the ball
     public void drawPlacementSquares(Graphics g)
     {
         g.setColor(Color.BLACK);
@@ -131,6 +137,7 @@ public class BallGameView extends JFrame {
         g.drawString("---", GROUPSEVENX - RADIUS, BOTTOMGROUPSY + RADIUS);
         g.drawString("---", GROUPEIGHTX - RADIUS, BOTTOMGROUPSY + RADIUS);
     }
+    // Draws win screen
     public void drawWon(Graphics g)
     {
         g.setColor(Color.BLACK);
@@ -141,6 +148,7 @@ public class BallGameView extends JFrame {
 
     }
 
+    // Double buffer set
     public void paint(Graphics g)
     {
         // Taken from Aquarium

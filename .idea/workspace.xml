@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="done with like everything">
+    <list default="true" id="b8154851-1682-46c2-8ebb-0a8001d06968" name="Changes" comment="done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BallGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BallGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BallGameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715032764608</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="done">
+      <option name="closed" value="true" />
+      <created>1715145142365</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715145142365</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +191,7 @@
     <MESSAGE value="litteraly got like all of it working, need to check if all balls in a group are same color, also need to clean up my code and make smaller functions for a lot of things, added temp rules" />
     <MESSAGE value="got it a lot better, no more index out of bounds i dont think, drawWon() isn't showing up though" />
     <MESSAGE value="done with like everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with like everything" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
 </project>

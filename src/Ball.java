@@ -1,4 +1,5 @@
 // Teddy Meeks
+// Taken from CS2FinalProjectResources
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Graphics;
